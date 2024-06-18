@@ -16,23 +16,19 @@ export default function CreateItem() {
     });
   };
 
-const addItem = (() => {
-    fetch(`${import.meta.env.VITE_BACKEND_API_URI}/api/items` ,
-      { method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...values,
-          status : "todo"
-        }),
-      })
-        
-      }
-    )
-  
-    
- 
+  const addItem = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_API_URI}/api/items`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...values,
+        status: "todo",
+      }),
+    });
+  };
 
   return (
     <form onSubmit={addItem}>
